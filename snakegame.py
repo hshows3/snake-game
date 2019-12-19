@@ -59,14 +59,19 @@ def gameLoop():
 
 # Boundaries
         if (lead_x >= display_width or lead_x < 0 or
-            lead_y >= display_height or lead_y < 0): gameOver = True
+            lead_y >= display_height or lead_y < 0):
+            print(snakeLength)
+            gameOver = True
 # Running into yourself
         else:
             for segment in snakeList[:-1]:
-                if segment == snakeHead: gameOver = True
+                if segment == snakeHead:
+                    print(snakeLength)
+                    gameOver = True
 
 
         while gameOver == True:
+
             gameDisplay.fill(white)
             message_to_screen("Game Over, C to continute, Q to quit",red)
             pygame.display.update()
@@ -79,9 +84,7 @@ def gameLoop():
                     if event.key == pygame.K_q:
                         gameExit = True
                         gameOver = False
-                        print(snakeLength)
                     if event.key == pygame.K_c:
-                        print(snakeLength)
                         gameLoop()
 
         if gameExit == True: break
