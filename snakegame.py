@@ -61,6 +61,11 @@ def gameLoop():
 # Boundaries
         if (lead_x >= display_width or lead_x < 0 or
             lead_y >= display_height or lead_y < 0): gameOver = True
+# Running into yourself
+        else:
+            for segment in snakeList[:-1]:
+                if segment == snakeHead: gameOver = True
+
 
         while gameOver == True:
             gameDisplay.fill(white)
