@@ -54,7 +54,6 @@ def gameLoop():
 # Coordinates for random appple
     randAppleX = math.floor(random.randrange(0, display_width)/pixel)*pixel
     randAppleY = math.floor(random.randrange(0, display_height)/pixel)*pixel
-    print(randAppleX, randAppleY)
 
     while not gameExit:
 
@@ -73,14 +72,19 @@ def gameLoop():
             pygame.display.update()
 
             for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    gameExit = True
+                    gameOver = False
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         gameExit = True
                         gameOver = False
+                        print(snakeLength)
                     if event.key == pygame.K_c:
+                        print(snakeLength)
                         gameLoop()
 
-
+        if gameExit == True: break
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
