@@ -126,11 +126,3 @@ def gameLoop():
     pygame.quit()
     quit()
 gameLoop()
-
-
-
-        # if event.type == pygame.KEYUP:
-            # if (event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or
-            #     event.key == pygame.K_UP or event.key == pygame.K_DOWN):
-            #     lead_x_change = 0
-            #     lead_y_change = 0
