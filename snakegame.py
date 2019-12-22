@@ -9,6 +9,7 @@ white = (255,255,255)
 black = (0,0,0,)
 red = (255,0,0)
 green = (0,155,0)
+blue = (0,0,255)
 
 
 pixel = 15
@@ -28,10 +29,19 @@ font = pygame.font.SysFont(None, 25)
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Slither')
 
+
+def text_objects(text,color):
+    textSurface = font.render(text, True, color)
+    return textSurface, textSurface.get_rect()
+
 # Prints message to screen
 def message_to_screen(msg,color):
-    screen_text = font.render(msg, True, color)
-    gameDisplay.blit(screen_text, [round(display_width/2),round(display_height/2)])
+    textSurface, textRect = text_objects(msg, color)
+    textRect.center = (display_width/2), (display_height/2)
+    gameDisplay.blit(textSurface, textRect)
+
+    # screen_text = font.render(msg, True, color)
+    # gameDisplay.blit(screen_text, [round(display_width/2),round(display_height/2)])
 
 # Draws snake
 def snake(snakeList, pixel):
@@ -73,7 +83,7 @@ def gameLoop():
         while gameOver == True:
 
             gameDisplay.fill(white)
-            message_to_screen("Game Over, C to continute, Q to quit",red)
+            message_to_screen("Game Over, C to continute, Q to quit",blue)
             pygame.display.update()
 
             for event in pygame.event.get():
@@ -120,8 +130,6 @@ def gameLoop():
 # Draw apple
         pygame.draw.rect(gameDisplay, red, [randAppleX,randAppleY,pixel,pixel])
 # Draw snake/pixel
-
-
         snakeHead = []
         snakeHead.append(lead_x)
         snakeHead.append(lead_y)
